@@ -15,9 +15,14 @@ input {
   @apply border border-black border-opacity-10;
 }
 
-.button {
+.button-right {
   @apply bg-black text-white rounded-r-md inline-block px-5 py-3;
 }
+
+.button-bottom {
+  @apply bg-black text-white rounded-b-md inline-block px-5 py-3;
+}
+
 
 .image-wrapper {
   width: 100%;

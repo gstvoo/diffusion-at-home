@@ -8,8 +8,6 @@ interface Prediction {
   status: string, 
 }
 
-const sleep = (ms : number) => new Promise((r) => setTimeout(r, ms));
-
 export default function Home() {
   const [prediction, setPrediction] = useState<Prediction>(); 
   
@@ -20,13 +18,14 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({prompt: e.target.name.value})
+      body: JSON.stringify({
+        prompt: e.target.name.value, 
+      })
     }); 
     let pred = await response.json();
     setPrediction(pred);
     console.log(pred.id);
     while(pred.status !== 'succeeded' && pred.status !== 'failed') {
-      await sleep(500); 
       const res = await fetch('api/predictions/' + pred.id); 
       pred = await res.json();
       setPrediction(pred);
@@ -46,15 +45,15 @@ export default function Home() {
           placeholder="Enter a prompt to display an image"
           className='flex-grow'
         />
-        <button className='button' type="submit">Go!</button>
+        <button className='button-right' type="submit">Go!</button>
       </form>
       {prediction && (
         <>
           <p className="py-3 text-sm opacity-50">status: {prediction.status}</p>
           {prediction.output && (
-            <div className="image-wrapper`">
+            <div className="image-wrapper">
               <Image
-                fill
+                fill 
                 src={prediction.output[prediction.output.length - 1]}
                 alt="output"
                 sizes="100vw"
