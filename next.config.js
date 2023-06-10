@@ -13,7 +13,11 @@ const nextConfig = {
           hostname: "replicate.delivery",
           port: '', 
           pathname: '/**/*', 
-        },
+        }, 
+        {
+          protocol: "https",
+          hostname: "i.imgur.com",
+        }
       ],
     },
   };
