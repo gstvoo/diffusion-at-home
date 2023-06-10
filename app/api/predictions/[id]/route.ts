@@ -6,12 +6,13 @@ const replicate = new Replicate({
 });
 
 export async function GET(req : NextRequest) {
-    const { pathname } = new URL(req.url);
-    const id = pathname.split('/').pop() as string;
-    const prediction = await replicate.predictions.get(id);
-    if (prediction?.error) {
-        return NextResponse.json({ detail: prediction.error }); 
-    }
-    
-    return NextResponse.json( prediction);
+	const { pathname } = new URL(req.url);
+	const id = pathname.split('/').pop() as string;
+	const prediction = await replicate.predictions.get(id);
+	
+	if (prediction?.error) {
+			return NextResponse.json({ detail: prediction.error }); 
+	}
+	
+	return NextResponse.json( prediction);
 }

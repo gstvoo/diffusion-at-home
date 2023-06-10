@@ -16,11 +16,11 @@ input {
 }
 
 .button-right {
-  @apply bg-black text-white rounded-r-md inline-block px-5 py-3;
+  @apply bg-black text-white rounded-r-md rounded-l-md inline-block px-5 py-3 mx-0.5;
 }
 
 .button-bottom {
-  @apply bg-black text-white rounded-b-md inline-block px-5 py-3;
+  @apply bg-black text-white rounded-b-md rounded-t-md inline-block px-5 py-3;
 }
 
 
@@ -28,4 +28,8 @@ input {
   width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
+}
+
+.active-site {
+  @apply text-blue-600;
 }
